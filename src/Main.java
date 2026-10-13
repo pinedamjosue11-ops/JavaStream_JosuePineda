@@ -12,10 +12,23 @@ void main (){
             .filter(p->p.stock()>0)
             .map(p->p.nombre().toUpperCase()).sorted().forEach(System.out::println);
 
-    System.out.println("generar Una Lista de productos del precio mas bajo al mas alto");
+    //System.out.println("generar Una Lista de productos del precio mas bajo al mas alto");
     // ej2
-    products.stream().sorted(Comparator.comparing(Product::precio).reversed())
-            .forEach(product -> System.out.println(product));
+    //products.stream().sorted(Comparator.comparing(Product::precio).reversed())
+      //      .forEach(product -> System.out.println(product));
+
+    //ej3
+    products.stream().sorted(Comparator.comparingInt(Product::stock).reversed().thenComparing(Product::precio)).forEach(System.out::println);
+
+    //Ejercicio 4
+
+    double totalInventario = DatosPrueba.PRODUCTS.stream().mapToDouble(p-> p.precio()*p.stock()).sum();
+    System.out.println(totalInventario);
+
+    DatosPrueba.FACTURAS.stream().forEach(p-> System.out.println( "Total " + "Q" + p.total()) );
+
+
+
 
 
 
