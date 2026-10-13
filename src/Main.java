@@ -12,7 +12,13 @@ void main (){
             .filter(p->p.stock()>0)
             .map(p->p.nombre().toUpperCase()).sorted().forEach(System.out::println);
 
-    System.out.println("generar Una Lista de Nombres de Productos que Tengan los Nombres en Mayuscula");
+    System.out.println("generar Una Lista de productos del precio mas bajo al mas alto");
+    // ej2
+    products.stream().sorted(Comparator.comparing(Product::precio).reversed())
+            .forEach(product -> System.out.println(product));
+
+
+
 
 
 }
